@@ -15,9 +15,9 @@
 ///
 /// The initial stack of a context must be constructed
 /// to be compatible with the switching code (file swicth_to.asm).
-extern "C" void switch_from_to( 
-   int32_t *store_old_sp, 
-   int32_t next_sp 
+extern "C" void switch_from_to(
+    int32_t *store_old_sp,
+    int32_t next_sp
 );
 
 #endif
