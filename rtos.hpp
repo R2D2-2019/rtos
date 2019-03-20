@@ -92,9 +92,11 @@
 
 #define RTOS_STATISTICS_ENABLED 1
 
-const unsigned int RTOS_DEFAULT_STACK_SIZE = 4 * 1024;
+constexpr uint_fast32_t RTOS_DEFAULT_STACK_SIZE = 4 * 1024;
 
-const unsigned int RTOS_MIN_PRIORITY = 1000;
+constexpr uint_fast32_t RTOS_MIN_PRIORITY = 1000;
+
+constexpr uint_fast32_t RTOS_DEFAULT_PRIORITY = RTOS_MIN_PRIORITY / 2;
 
 
 //***************************************************************************
@@ -1008,7 +1010,7 @@ public:
         /// The default is 4 kB.
         task_base(
             coroutine<> &cor,
-            unsigned int priority = RTOS_MIN_PRIORITY,
+            unsigned int priority = RTOS_DEFAULT_PRIORITY,
             const char *tname = ""
         );
 
@@ -1165,7 +1167,7 @@ public:
     public:
 
         task(
-            unsigned int priority = RTOS_MIN_PRIORITY,
+            unsigned int priority = RTOS_DEFAULT_PRIORITY,
             const char *tname = ""
         ) :
             task_base(cor, priority, tname),
@@ -1174,7 +1176,7 @@ public:
         task(
             const char *tname
         ) :
-            task_base(cor, RTOS_MIN_PRIORITY, tname),
+            task_base(cor, RTOS_DEFAULT_PRIORITY, tname),
             cor(task_trampoline) {}
 
     };
