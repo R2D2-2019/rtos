@@ -959,7 +959,7 @@ public:
         RTOS_STATISTICS(const char *task_name;)
 
         // a lower number means a higher priority, 0 is highest
-        unsigned int task_priority;
+        uint_fast32_t task_priority;
 
     protected:
 
@@ -1010,7 +1010,7 @@ public:
         /// The default is 4 kB.
         task_base(
             coroutine<> &cor,
-            unsigned int priority = RTOS_DEFAULT_PRIORITY,
+            uint_fast32_t priority = RTOS_DEFAULT_PRIORITY,
             const char *tname = ""
         );
 
@@ -1043,7 +1043,7 @@ public:
         void release();
 
         /// report the task priority
-        unsigned int priority() const { return task_priority; }
+        uint_fast32_t priority() const { return task_priority; }
 
         /// report the task name
         const char *name() const;

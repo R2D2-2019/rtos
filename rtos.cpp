@@ -86,7 +86,7 @@ void task_trampoline(void) {
 
 rtos::task_base::task_base(
     coroutine<> &cor,
-    unsigned int priority,
+    uint_fast32_t priority,
     const char *tname
 ) :
     cor(cor),
