@@ -1087,15 +1087,6 @@ void rtos::add(task_base *new_task) {
     task_base **t = &taskList;
 
     while ((*t != nullptr) && ((*t)->task_priority <= new_task->task_priority)) {
-        // if the task priorities are equal, increment the priority
-        // of the newly allocated task if possible
-        if ((*t)->task_priority == new_task->task_priority) {
-            if (new_task->task_priority >= RTOS_MIN_PRIORITY) {
-                new_task->task_priority++;
-            } else {
-                rtos_fatal ("duplicate task priority");
-            }
-        }
         t = &((*t)->nextTask);
     }
     // now insert the new task after the current task
